@@ -22,7 +22,7 @@ This is an comment system application
     * `quit` close aplication
 
 
-## Contributers
+## Contributors
 
 * Kevin Munene 
 * Erastus Ruiru
