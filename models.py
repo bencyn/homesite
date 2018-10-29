@@ -6,10 +6,22 @@ class User(object):
     """"Defines user objects and methods"""
 
     def __init__(self):
-        pass
+        self.all_users=users
 
-    def signup(self):
-        pass
+    def signup(self, username, password, login_time=None,role=None, status=None,):
+        
+        new_user = {
+            "username": username,
+            "password": password,
+            "role": role,
+            "status": status,
+            "login_time":login_time
+        }
+
+        users.append(new_user)
+        user_name=new_user['username']
+        return user_name
+
 
     def login(self):
         pass
@@ -19,7 +31,7 @@ class User(object):
 
 
 class Comment(object):
-    """Defines comment objecta and methods"""
+    """Defines comment objects and methods"""
 
     def __init__(self):
         pass
