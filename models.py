@@ -1,4 +1,4 @@
-from datetime import date
+import datetime
 
 users = []
 comments = []
@@ -10,7 +10,7 @@ class User(object):
     def __init__(self):
         self.all_users=users
 
-    def signup(self, username, password, login_time=None,role=None, status=False):
+    def signup(self, username, password, login_time=None,role=None, status=True):
         
         new_user = {
             "username": username,
@@ -26,7 +26,7 @@ class User(object):
 
 
     def login(self,username,password):
-        current_date = str(date.today())
+        current_date = str(datetime.datetime.utcnow())
         current_user=[user for user in users if user['username']==username]
         if current_user:
             user_password=current_user[0]['password']
@@ -35,26 +35,61 @@ class User(object):
                 current_user[0]['login_time']=current_date
                 user_role=current_user[0]['role']
                 return user_role
-            return None
-	    
+            return None	    
         return None
 
-    def logout(self):
-        pass
+    def logout(self, username):
+        """this method sign's out a user"""
+
+        current_user = [user for user in users if user["username"] == username]
+
+        if not current_user:
+            return None
+        elif user[0]["status"] == False:
+            return None
+        else:
+            for user in users:
+                if user["username"] == username:
+                    user["status"] =False 
+                    return username
+
 
 
 class Comment(object):
+
     """Defines comment objects and methods"""
 
     def __init__(self):
         pass
 
-    def create_comment(self):
-        pass
+    def create_comment(self, message, username):
+        """ add comment """
+        for user in users:
+            print(users)
+            if user['username'] == username:
+                if user['status'] is True: 
+                    incremented_id = len(comments) + 1
+                    timestamp = datetime.datetime.utcnow()
+                    comment = {
+                    "id": incremented_id,
+                    "message": message, 
+                    "timestamp":timestamp,
+                    "author":username
+                    }
+                    comments.append(comment)
+                    return comment
+                return None
+            return None
+        return None
 
-    def edit_comment(self):
-        pass
+    def edit_comment(self, id):
+        new = input('edit the message')
+        for comment in comments:
+            if comment['id'] == id:
+                comment.update(new)
 
-    def delete_comment(self):
-        pass
 
+    def delete_comment(self, id):
+        for i, comment in enumerate(comments):
+            if comment['id'] == id:
+                comments.pop(i)
