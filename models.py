@@ -10,7 +10,7 @@ class User(object):
     def __init__(self):
         self.all_users=users
 
-    def signup(self, username, password, login_time=None,role=None, status=None,):
+    def signup(self, username, password, login_time=None,role=None, status=False):
         
         new_user = {
             "username": username,
