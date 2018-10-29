@@ -93,3 +93,4 @@ class Comment(object):
         for i, comment in enumerate(comments):
             if comment['id'] == id:
                 comments.pop(i)
+                return id

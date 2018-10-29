@@ -146,6 +146,14 @@ def main():
                                         {}
                             """.format(comment__))
                             command = str(input("Enter a option? "))
+                            if command == "delete":
+                                comment_id = int(input("Enter the id of the comment you want to delete: "))
+                                if comment.delete_comment(comment_id):
+                                    print("Comment deleted successfully")
+                                    command = str(input("Enter a option? "))
+                                else: 
+                                    print("Comment of that id was not found, try another command to try again")
+                                    command = str(input("Enter option? "))
                         else:
                             print("""
                             ------------Unfortunately we do not get your command--------------
