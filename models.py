@@ -20,7 +20,7 @@ class User(object):
             user_password=current_user[0]['password']
             if user_password==password:
                 current_user[0]['status']=True
-                current_user[0]['time']=current_date
+                current_user[0]['login_time']=current_date
                 user_role=current_user[0]['role']
                 return user_role
             return None
