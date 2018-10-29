@@ -19,17 +19,26 @@ class User(object):
 
 
 class Comment(object):
-    """Defines comment objecta and methods"""
+    """handles comment CRUD Operations"""
 
     def __init__(self):
-        pass
+        self.comments_list = []
+        self.users = []
 
-    def create_comment(self):
-        pass
-
-    def edit_comment(self):
-        pass
-
-    def delete_comment(self):
-        pass
+    def create_comment(self, message, username):
+        """ add comment """
+        for user in self.users:
+            if user['username'] == username:
+                if user['status'] is True: 
+                    incremented_id = len(self.comments_list) + 1
+                    timestamp = datetime.datetime.now()
+                    comment = {
+                    "id": incremented_id,
+                    "message": message, 
+                    "timestamp":timestamp,
+                    "author":username
+                    }
+                    self.comments_list.append(comment)
+            return " you must be logged in to make comment"
+        return "user does not exist"
 
