@@ -68,3 +68,17 @@ class Comment(object):
             return " you must be logged in to make comment"
         return "user does not exist"
 
+    def create_comment(self):
+        pass
+
+    def edit_comment(self, id):
+        new = input('edit the message')
+        for comment in self.comments:
+            if comment['id'] == id:
+                comment.update(new)
+
+
+    def delete_comment(self, id):
+        for i, comment in enumerate(self.comments):
+            if orcomment['id'] == id:
+                self.comments.pop(i)
